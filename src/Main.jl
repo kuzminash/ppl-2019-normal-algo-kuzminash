@@ -1,6 +1,1 @@
-string=readline()
-algorithm1=[] #кладем элементы, на которые будем заменять
-algorithm2=[] #кладем элементы на которые будем заменять
-algorithm3=[] #кладем 0 если подстановка заключительная и 1 если нет
-
-print(replace(string, "a"=>"aa"))
+print("Hello world")
