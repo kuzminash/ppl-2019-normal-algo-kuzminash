@@ -13,10 +13,20 @@ end
 
 
 global string=readline()
-algorithm1=[] #кладем элементы, которые будем заменять(переменная a1)
-algorithm2=[] #кладем элементы на которые будем заменять(переменная a2)
-algorithm3=[] #кладем 0 если подстановка однакратна и 1 если нет
-if occursin("aa", string)
-    string=multiple_times(string, "aa", "a")
-   println(string)
+substitutions=parse(UInt8, readline())
+global algorithm=fill( "aaa" , (substitutions,3) )
+for i=1:substitutions
+    alg=readline()
+    algorithm[i,1], algorithm[i,2],algorithm[i,3]=split(alg," ")
+
 end
+
+
+
+
+
+
+##if occursin("aa", string)
+    ##string=multiple_times(string, "aa", "a")
+   ##println(string)
+##end
