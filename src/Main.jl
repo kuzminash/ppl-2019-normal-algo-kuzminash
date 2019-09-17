@@ -7,14 +7,28 @@ function existance(string,exist,a1)
   return exist
 end
 function one_time(string, a1, a2)
-    string=replace(string, a1=>a2,count=1)
+    if a1!="•" && a2!="•"
+        string=replace(string, a1=>a2,count=1)
+    elseif  a1!="•"
+         string=a2*string
+    else
+         string=replace(string, a1=>"",count=1)
+    end
+    println(1,string)
     return string
 end
 
 function multiple_times(string, a1, a2)
     while occursin(a1, string)
-        string=replace(string, a1=>a2, count=1)
+         if a1!="•" && a2!="•"
+             string=replace(string, a1=>a2,count=1)
+         elseif  a1!="•"
+             string=a2*string
+         else
+            string=replace(string, a1=>"",count=1)
+         end
     end
+    println(0,string)
     return string
 end
 
@@ -43,11 +57,10 @@ while exist
   if algorithm[operation_number,3]=="0"
       global string=one_time(string,algorithm[operation_number,1],algorithm[operation_number,2])
   else
-      global string=multiple_times()(string,algorithm[operation_number,1],algorithm[operation_number,2])
+      global string=multiple_times(string,algorithm[operation_number,1],algorithm[operation_number,2])
    end
 end
 println(string)
-
 
 
 
