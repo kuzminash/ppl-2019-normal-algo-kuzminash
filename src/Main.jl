@@ -1,30 +1,20 @@
 function existance(string,exist,a1)
   if occursin(a1, string)
     exist=true
+  elseif a1=="•"
+    exist=true
   else
     exist=false
   end
   return exist
 end
-function one_time(string, a1, a2)
+function substitution(string, a1, a2)
     if a1!="•" && a2!="•"
         string=replace(string, a1=>a2,count=1)
     elseif  a1=="•"
          string=a2*string
     else
          string=replace(string, a1=>"",count=1)
-    end
-    println(1,string)
-        return string
-end
-
-function multiple_times(string, a1, a2)
-    while occursin(a1, string)
-         if a1!="•" && a2!="•"
-             string=replace(string, a1=>a2,count=1)
-         elseif a2=="•"
-            string=replace(string, a1=>"",count=1)
-         end
     end
     return string
 end
@@ -38,7 +28,6 @@ global algorithm=fill( "aaa" , (substitutions,3) ) ##чтобы не остав�
 for i=1:substitutions
     alg=readline()
     algorithm[i,1], algorithm[i,2],algorithm[i,3]=split(alg," ")
-
 end
 
 exist=true
@@ -48,13 +37,11 @@ while exist
     global operation_number=i
     global exist=existance(string,exist,algorithm[operation_number,1])
     if exist==true
+        global string=substitution(string,algorithm[operation_number,1],algorithm[operation_number,2])
         if algorithm[operation_number,3]=="0"
-            global string=one_time(string,algorithm[operation_number,1],algorithm[operation_number,2])
             exist=false
-            break
-        else
-            global string=multiple_times(string,algorithm[operation_number,1],algorithm[operation_number,2])
         end
+        break
     end
   end
 end
