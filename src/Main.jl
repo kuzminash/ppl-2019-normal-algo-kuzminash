@@ -48,13 +48,14 @@ while exist
     global operation_number=i
     global exist=existance(string,exist,algorithm[operation_number,1])
     if exist==true
-      break
+        if algorithm[operation_number,3]=="0"
+            global string=one_time(string,algorithm[operation_number,1],algorithm[operation_number,2])
+            exist=false
+            break
+        else
+            global string=multiple_times(string,algorithm[operation_number,1],algorithm[operation_number,2])
+        end
     end
   end
-  if algorithm[operation_number,3]=="0"
-      global string=one_time(string,algorithm[operation_number,1],algorithm[operation_number,2])
-  else
-      global string=multiple_times(string,algorithm[operation_number,1],algorithm[operation_number,2])
-   end
 end
 println(string)
