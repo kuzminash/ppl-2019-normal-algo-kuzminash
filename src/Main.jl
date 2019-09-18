@@ -9,26 +9,23 @@ end
 function one_time(string, a1, a2)
     if a1!="•" && a2!="•"
         string=replace(string, a1=>a2,count=1)
-    elseif  a1!="•"
+    elseif  a1=="•"
          string=a2*string
     else
          string=replace(string, a1=>"",count=1)
     end
     println(1,string)
-    return string
+        return string
 end
 
 function multiple_times(string, a1, a2)
     while occursin(a1, string)
          if a1!="•" && a2!="•"
              string=replace(string, a1=>a2,count=1)
-         elseif  a1!="•"
-             string=a2*string
-         else
+         elseif a2=="•"
             string=replace(string, a1=>"",count=1)
          end
     end
-    println(0,string)
     return string
 end
 
@@ -61,10 +58,3 @@ while exist
    end
 end
 println(string)
-
-
-
-##if occursin("aa", string)
-    ##string=multiple_times(string, "aa", "a")
-   ##println(string)
-##end
