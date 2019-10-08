@@ -65,6 +65,7 @@ function while_exist(word,lines,substitutions)
 end
 
 function main()
+
     lines=read_from_the_file()#считываем весь файл
     word=lines[1]
     lines=lines[2:end] #удаляем слово из нашего считанного файла, чтобы стались только подстановки
@@ -74,7 +75,6 @@ function main()
     while exist  ##цикл будет существовать пока нашлась подстрока которую нужно заменить
         word, exist=while_exist(word, lines,substitutions)
     end
-
     println("Получившееся слово:")
     println(word)
 
