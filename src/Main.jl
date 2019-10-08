@@ -46,9 +46,9 @@ end
 
 function split_substitutions(lines)
  tuple_of_substitutions=Array{Tuple{String,String,Bool},1}()#заводим массив для подстановок
- for number_of_the_substitution=1:length(lines)
-    push!(tuple_of_substitutions,from_string_to_tuple(lines[number_of_the_substitution]))
- end
+    for number_of_the_substitution=1:length(lines)
+        push!(tuple_of_substitutions,from_string_to_tuple(lines[number_of_the_substitution]))
+    end
  return tuple_of_substitutions
 end
 
