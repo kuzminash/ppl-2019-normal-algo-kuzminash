@@ -12,7 +12,7 @@ function change_empty_sign(first_substring, second_substring)##заменяем 
     return first_substring, second_substring
 end
 
-function substitution(word, first_substring, second_substring) ##реализация замены подстроки
+function substitution(word, first_substring, second_substring) ##реализация замены подстрок
     return replace(word, first_substring=>second_substring,count=1)
 end
 
@@ -41,14 +41,12 @@ function from_string_to_tuple(substitution)
         not_ultimate_substitution=true
     end
     left_part_of_substitution,righ_part_of_substitution=change_empty_sign(left_part_of_substitution, righ_part_of_substitution)
-    println(left_part_of_substitution,righ_part_of_substitution,not_ultimate_substitution)
     return left_part_of_substitution,righ_part_of_substitution,not_ultimate_substitution
 end
 
 function split_substitutions(lines)
  tuple_of_substitutions=Array{Tuple{String,String,Bool},1}()#заводим массив для подстановок
  for number_of_the_substitution=1:length(lines)
-    println(from_string_to_tuple(lines[number_of_the_substitution]))
     push!(tuple_of_substitutions,from_string_to_tuple(lines[number_of_the_substitution]))
  end
  return tuple_of_substitutions
@@ -58,10 +56,10 @@ function while_exist(word,lines,substitutions)
     for i=1:length(lines)
             operation_number=i
             exist=existance(word,substitutions[operation_number][1])
-            word=if_found_substring(exist,word,substitutions[operation_number][1],substitutions[operation_number][2])
-            if !substitutions[operation_number][3]
-                return word, false
-             end
+            if exist
+                word=if_found_substring(exist,word,substitutions[operation_number][1],substitutions[operation_number][2])
+                return word, substitutions[operation_number][3]
+            end
     end
     return word, exist
 end
@@ -71,7 +69,6 @@ function main()
     word=lines[1]
     lines=lines[2:end] #удаляем слово из нашего считанного файла, чтобы стались только подстановки
     substitutions=split_substitutions(lines) #из файла делаем кортеж из подстановок
-    println(substitutions)
     exist=true ##переменная отвечает за существование подстроки в строке
 
     while exist  ##цикл будет существовать пока нашлась подстрока которую нужно заменить
