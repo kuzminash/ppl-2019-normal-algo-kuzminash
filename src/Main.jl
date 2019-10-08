@@ -74,6 +74,7 @@ function main()
     while exist  ##цикл будет существовать пока нашлась подстрока которую нужно заменить
         word, exist=while_exist(word, lines,substitutions)
     end
+
     println("Получившееся слово:")
     println(word)
 
